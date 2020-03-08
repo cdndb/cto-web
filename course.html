@@ -1,0 +1,40 @@
+<html >
+
+<head>
+    <title>{{ title }}</title>
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    
+    
+</head>
+
+<body>
+    <div id="app">
+        <ol>
+            <li v-for="item in lessons">
+              <a v-bind:href="'play.html#' +  $course + '-' + item.lesson">{{ item.lesson }}</a>
+             
+            </li>
+          </ol>
+    </div>
+    <script type="text/javascript">
+        var data = {title:'',course:'',lessons:[]};
+        var app = new Vue({
+            el: '#app',
+            data: data
+        })
+
+        Vue.prototype.$course = location.hash.substr(1);
+
+        $.getScript('http://121.36.230.25/cto/stat/cto-' + location.hash.substr(1) + '/r987654321',function(){
+            console.dir(r987654321);
+            data.lessons = r987654321.lessons;
+            data.title = r987654321.title;
+            document.title = data.title;
+            data.course = r987654321.course;
+        });
+    </script>
+</body>
+
+</html>
