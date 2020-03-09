@@ -16,7 +16,7 @@
             var hash = location.hash;
             if (hash) {
                 var matchs = /#(\d+)-(\d+)/.exec(hash);
-                if (matchs.length == 3) {
+                if (matchs && matchs.length == 3) {
                     return 'https://cdn.jsdelivr.net/gh/cdndb/cto-' + matchs[1] + '@tsfiles/' + matchs[2] +
                         '/index.m3u8'
                 }
